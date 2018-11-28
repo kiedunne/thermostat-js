@@ -6,21 +6,21 @@ function Thermostat() {
   this.usage = 'medium'
 };
 
-  Thermostat.prototype.turn_up = function(degrees) {
-    return this.temp += degrees
+  Thermostat.prototype.turn_up = function() {
+    return this.temp += 1
   };
 
-  Thermostat.prototype.turn_up = function(degrees) {
-    if(this.ps == true && (this.temp + degrees > 25)) {
+  Thermostat.prototype.turn_up = function() {
+    if(this.ps == true && (this.temp + 1 > 25)) {
       throw new Error('PS max temp 25 degrees');
-  } else if(this.ps == false && (this.temp + degrees > 32)) {
+  } else if(this.ps == false && (this.temp + 1 > 32)) {
       throw new Error('Non-PS max temp 32 degrees');
   }
-    this.temp += degrees
+    this.temp += 1
   };
 
-  Thermostat.prototype.turn_down = function(degrees) {
-    return this.temp -= degrees
+  Thermostat.prototype.turn_down = function() {
+    return this.temp -= 1
   };
 
   Thermostat.prototype.ps_switch = function() {
