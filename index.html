@@ -2,71 +2,112 @@
 <!DOCTYPE html>
 
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <title>JS Thermostat</title>
     <link type="text/css" rel="stylesheet" href="./public/style.css">
     <script src="./src/thermostat.js"></script>
-    <script src="./interface.js"></script>
     <script src="./jquery-3.3.1.min.js"></script>
+</head>
 
-    <div class="div_nav_bar">
-        <ul class='ul_nav_bar'>
-          <li><a id='temperature-up'>TURN UP</a></li>
-          <li><a id='temperature-down'>TURN DOWN</a></li>
-          <li><a id="reset">RESET</a></li>
-          <li><a id="check_usage">CHECK USAGE</a></li>
-          <li><a id="ps_on">ENABLE POWERSAVER</a></li>
-          <li><a id="ps_off">DISABLE POWERSAVER</a></li>
-        </ul>
+<body>
+  <div class='body_container'>
+
+    <div class='thermo_container'>
+
+      <div class='control_container'>
+        <img class= "thermostat_icon" src=./public/images/thermostat.png>
+        <div class='temp_logic'>
+          <h1 id="temperature">Temp</h1>
+          <h1 class='monitor_text'id="power-saving-status">on</h1>
+        </div>
+
+        <div class='thermo_controls'>
+          <img id='temperature-up' class='js_buttons' src="./public/images/plus_js.png">
+          <img id='temperature-down'class='js_buttons' src="./public/images/minus_js.png">
+          <img id='ps_on' class='js_buttons' src="./public/images/ps_on_js.png">
+          <img id='ps_off' class='js_buttons' src="./public/images/ps_off_js.png">
+        </div>
+      </div>
+      <h1 class='thermo_js_text'>JS Thermostat.</h1>
     </div>
 
-    <h1 id="temperature" class='temperature.usage'>Temp</h1>°C
-    power saving mode is <h1 id="power-saving-status">on</h1>
-  </head>
+    <div class='thermo_container'>
+        <img class= 'thermostat_icon' src=./public/images/thermostat_city.png>
 
-  <body>
-      <div class="head_container">
-        <img class= "thermostat_icon" src=./public/images/thermostat.png style='width:30%'>
-        <h1 class='welcome_text'>JS Thermostat.</h1>
+      <div class='thermo_controls'>
+
+          <img class='js_buttons' src="./public/images/plus_city.png">
+          <img class='js_buttons' src="./public/images/minus_city.png">
+          <img class='js_buttons' src="./public/images/plus_city.png">
       </div>
+        <h1 class='thermo_city_text'>City Thermostat.</h1>
+    </div>
+
+  </div>
+
+    <div class='js_logic'>
+
+        <div class="">
+          <h1>Current temperature: <span id="current-temperature">20</span></h1>
+            <form id="select-city">
+              <input id="current-city" type="text" placeholder="Enter a city"></input>
+              <input type="submit"></input>
+            </form>
+        </div>
+    </div>
+
       <script>
         $(document).ready(function() {
+          $.get('http://api.openweathermap.org/data/2.5/weather?q=London&appid=a3d9eb01d4de82b9b8d0849ef604dbed&units=metric', function(data) {
+          $('#current-temperature').text(data.main.temp);
+          })
           var thermostat = new Thermostat();
-          $('#temperature').text(thermostat.temp);
+           updateTemperature();
 
         $('#temperature-up').on('click', function() {
           thermostat.turn_up();
-          $('#temperature').text(thermostat.temp);
+           updateTemperature();
           });
 
         $('#temperature-down').click(function() {
           thermostat.turn_down();
-          $('#temperature').text(thermostat.temp);
+           updateTemperature();
           });
 
          $('#reset').click(function() {
            thermostat.reset();
-           $('#temperature').text(thermostat.temp);
+            updateTemperature();
          });
 
          $('#ps_on').click(function() {
            thermostat.ps_on();
            $('#power-saving-status').text('on')
-           $('#temperature').text(thermostat.temp);
-         })
+            updateTemperature();
+         });
 
          $('#ps_off').click(function() {
            thermostat.ps_off();
            $('#power-saving-status').text('off')
-           $('#temperature').text(thermostat.temp);
-         })
+            updateTemperature();
+         });
+
          function updateTemperature() {
            $('#temperature').text(thermostat.temp);
            thermostat.check_usage();
-           $('#temperature').attr('class', thermostat.usage());
-}
+           $('#temperature').attr('class', thermostat.usage);
+           $('#temperature').text(thermostat.temp);
+        };
+
+        $('#select-city').submit(function(event) {
+          event.preventDefault();
+          var city = $('#current-city').val();
+          $.get('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=a3d9eb01d4de82b9b8d0849ef604dbed&units=metric', function(data) {
+          $('#current-temperature').text(data.main.temp);
+          });
         });
+      });
+
     </script>
   </body>
 </html>

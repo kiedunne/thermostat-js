@@ -30,7 +30,7 @@ function Thermostat() {
   Thermostat.prototype.ps_on = function() {
     this.ps = true;
   };
-  
+
   Thermostat.prototype.ps_off = function() {
     this.ps = false;
   };
@@ -40,9 +40,9 @@ function Thermostat() {
   }
 
   Thermostat.prototype.check_usage = function() {
-    if(this.temp < 18) {
+    if(this.temp <= 18) {
       this.usage = 'low';
-    } else if(18 >= this.temp && this.temp <= 25 ) {
+    } else if(this.temp >18 && this.temp < 25 ) {
       this.usage = 'medium';
     } else {
       this.usage = 'high';

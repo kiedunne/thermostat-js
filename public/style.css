@@ -1,5 +1,50 @@
 
+h1.monitor_text{
+  font-family: arial;
+  font-weight: bold;
+  font-size: 20px;
+  color:#3f3d3d;
+  margin: 0;
+  padding: 10px;
+  padding-left: 60px;
+  padding-right: 0px;
+}
+
+h1.low {
+    color:#93d87f;
+    font-family: arial;
+    font-weight: bold;
+    font-size: 20px;
+    margin: 0;
+    padding: 10px;
+    padding-right: 60px;
+    padding-left: 0px;
+  }
+
+h1.medium {
+    color:#3f3d3d;
+    font-family: arial;
+    font-weight: bold;
+    font-size: 20px;
+    margin: 0;
+    padding: 10px;
+    padding-right: 60px;
+    padding-left: 0px;
+  }
+
+h1.high {
+    color:#E35349;
+    font-family: arial;
+    font-weight: bold;
+    font-size: 20px;
+    margin: 0;
+    padding: 10px;
+    padding-right: 40px;
+    padding-left: 0px;
+  }
+
 /* NAVIGATION BAR */
+
 .ul_nav_bar {
   display: flex;
   flex-direction: row;
@@ -9,29 +54,16 @@
   padding: 0;
 }
 
-button {
-  padding: 20px;
-	color: #807878;
-	text-decoration: none;
-  border: 3px solid transparent;
-}
-
-button:hover {
-	padding: 20px;
-	border: 3px solid #E35349;
-	font-weight: lighter;
-	text-decoration: none;
-}
-
 li {
-	font-weight: lighter;
-	font-size: 15px;
-	font-family: helvetica;
-	color: white;
 	padding: 40px;
+  text-align: center;
 }
 
 li a {
+  font-weight: lighter;
+	font-size: 15px;
+	font-family: helvetica;
+  text-align: center;
   padding: 20px;
 	color: #807878;
 	text-decoration: none;
@@ -41,45 +73,82 @@ li a {
 li a:hover {
 	padding: 20px;
 	border: 3px solid #E35349;
-	font-weight: lighter;
 	text-decoration: none;
 }
 /* TEMPERATURE */
-h1#temperature {
+
+
+
+
+
+
+/* BODY */
+div.body_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+  div.thermo_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+  }
+
+    div.control_container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+      div.control_container {
+        position:relative;
+
+      }
+      div.temp_logic {
+        display: flex;
+        flex-direction: row;
+        position: absolute;
+        margin-top: -30px;
+      }
+
+      div.thermo_controls {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+      }
+
+        img.js_buttons {
+          width:5%;
+          padding: 10px;
+        }
+
+  img.thermostat_icon {
+    width:50%;
+  }
+
+  h1.thermo_js_text {
     font-family: arial;
     font-weight: bold;
     color: #E35349;
     text-align: center;
-    font-size: 20px;
-  }
-h1#temperature.low {
-    color: green;
-  }
+    font-size: 50px;
+    padding: 20px;
+    margin: 0;
 
-h1#temperature.medium {
-    color: black;
   }
-
-h1#temperature.high {
-    color: red;
+  h1.thermo_city_text {
+    font-family: arial;
+    font-weight: bold;
+    color: #66A9D9;
+    text-align: center;
+    font-size: 50px;
+    padding: 20px;
+    margin: 0;
   }
-/* BODY */
-h1.welcome_text {
-  font-family: arial;
-  font-weight: bold;
-  color: #E35349;
-  text-align: center;
-  font-size: 50px;
-  padding: 10px;
-
-}
-div.head_container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-img.thermostat_icon {
-  padding-top: 20px;
-}
