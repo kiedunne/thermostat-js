@@ -10,24 +10,19 @@
     <script src="./interface.js"></script>
     <script src="./jquery-3.3.1.min.js"></script>
 
-    <script>
-        $( document ).ready(function() {
-          var thermostat = new Thermostat();
-          $('#temperature').text(thermostat.temp);
-        });
-    </script>
-
     <div class="div_nav_bar">
         <ul class='ul_nav_bar'>
-          <li><a href="index.html">TURN UP</a></li>
-          <li><a href="map.html">TURN DOWN</a></li>
-          <li><a href="map.html">RESET</a></li>
-          <li><a href="map.html">CHECK CONSUMPTION</a></li>
-          <li><a href="gallery-test.html">CHANGE POWER MODE</a></li>
+          <li><a id='temperature-up'>TURN UP</a></li>
+          <li><a id='temperature-down'>TURN DOWN</a></li>
+          <li><a id="reset">RESET</a></li>
+          <li><a id="check_usage">CHECK USAGE</a></li>
+          <li><a id="ps_on">ENABLE POWERSAVER</a></li>
+          <li><a id="ps_off">DISABLE POWERSAVER</a></li>
         </ul>
     </div>
 
-    <h1 id="temperature">Temp</h1>
+    <h1 id="temperature" class='temperature.usage'>Temp</h1>°C
+    power saving mode is <h1 id="power-saving-status">on</h1>
   </head>
 
   <body>
@@ -35,6 +30,43 @@
         <img class= "thermostat_icon" src=./public/images/thermostat.png style='width:30%'>
         <h1 class='welcome_text'>JS Thermostat.</h1>
       </div>
+      <script>
+        $(document).ready(function() {
+          var thermostat = new Thermostat();
+          $('#temperature').text(thermostat.temp);
 
+        $('#temperature-up').on('click', function() {
+          thermostat.turn_up();
+          $('#temperature').text(thermostat.temp);
+          });
+
+        $('#temperature-down').click(function() {
+          thermostat.turn_down();
+          $('#temperature').text(thermostat.temp);
+          });
+
+         $('#reset').click(function() {
+           thermostat.reset();
+           $('#temperature').text(thermostat.temp);
+         });
+
+         $('#ps_on').click(function() {
+           thermostat.ps_on();
+           $('#power-saving-status').text('on')
+           $('#temperature').text(thermostat.temp);
+         })
+
+         $('#ps_off').click(function() {
+           thermostat.ps_off();
+           $('#power-saving-status').text('off')
+           $('#temperature').text(thermostat.temp);
+         })
+         function updateTemperature() {
+           $('#temperature').text(thermostat.temp);
+           thermostat.check_usage();
+           $('#temperature').attr('class', thermostat.usage());
+}
+        });
+    </script>
   </body>
 </html>

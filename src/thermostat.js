@@ -27,6 +27,14 @@ function Thermostat() {
     this.ps = !this.ps;
   };
 
+  Thermostat.prototype.ps_on = function() {
+    this.ps = true;
+  };
+  
+  Thermostat.prototype.ps_off = function() {
+    this.ps = false;
+  };
+
   Thermostat.prototype.reset = function() {
     this.temp = 20;
   }
