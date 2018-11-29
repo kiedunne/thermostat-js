@@ -1,51 +1,86 @@
+/* CITY THERMOSTAT */
 
 h1.monitor_text{
   font-family: arial;
   font-weight: bold;
   font-size: 20px;
-  color:#3f3d3d;
+  color:#666262;
   margin: 0;
-  padding: 10px;
-  padding-left: 60px;
-  padding-right: 0px;
 }
 
-h1.low {
-    color:#93d87f;
-    font-family: arial;
-    font-weight: bold;
-    font-size: 20px;
-    margin: 0;
-    padding: 10px;
-    padding-right: 60px;
-    padding-left: 0px;
+h1.city_text{
+  font-family: arial;
+  font-weight: bold;
+  font-size: 30px;
+  color:#666262;
+}
+
+h1#current-temperature{
+  font-family: arial;
+  font-weight: bold;
+  font-size: 30px;
+  color:#666262;
+  margin: 0;
+}
+input[type=submit] {
+  font-weight: lighter;
+  background-color: #E35349;
+  font-size: 30px;
+  color: white;
+  border: 0px;
+  border-radius: 10px;
+  width: 100%;
+
+}
+  input[type=submit]:hover {
+    opacity: 0.5;
   }
 
-h1.medium {
-    color:#3f3d3d;
-    font-family: arial;
-    font-weight: bold;
-    font-size: 20px;
-    margin: 0;
-    padding: 10px;
-    padding-right: 60px;
-    padding-left: 0px;
-  }
+input#current-city{
+  padding-bottom: 10px;
 
-h1.high {
-    color:#E35349;
-    font-family: arial;
-    font-weight: bold;
-    font-size: 20px;
-    margin: 0;
-    padding: 10px;
-    padding-right: 40px;
-    padding-left: 0px;
-  }
+}
+input[type=text] {
+  font-weight: lighter;
+  font-size: 20px;
+  color: #3f3d3d;
+  border-radius: 10px;
+  width: 100%;
+  border-style: none;
+  outline: none;
+}
+
+form#select-city {
+  width: 100%;
+  padding: 30px;
+}
+  h1.low {
+      color:#93d87f;
+      font-family: arial;
+      font-weight: bold;
+      font-size: 20px;
+      margin: 0;
+    }
+
+  h1.medium {
+      color:#666262;
+      font-family: arial;
+      font-weight: bold;
+      font-size: 20px;
+      margin: 0;
+    }
+
+  h1.high {
+      color:#E35349;
+      font-family: arial;
+      font-weight: bold;
+      font-size: 20px;
+      margin: 0;
+    }
 
 /* NAVIGATION BAR */
 
-.ul_nav_bar {
+/* .ul_nav_bar {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -74,47 +109,70 @@ li a:hover {
 	padding: 20px;
 	border: 3px solid #E35349;
 	text-decoration: none;
-}
+} */
 /* TEMPERATURE */
 
 
 
-
-
-
-/* BODY */
+/* JS THERMOSTAT */
 div.body_container {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   padding: 20px;
+  flex-grow: 1;
+  flex-basis: 0;
 }
 
-  div.thermo_container {
+  div.stats_container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-
+    flex-grow: 1;
+    flex-basis: 0;
   }
-
+      div.stats_sub_container_city {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 30px;
+      }
+        div.city_temp_degrees {
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+        }
+      div.stats_sub_container_js_temp {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 30px;
+      }
+      div.js_temp_degrees {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+      }
     div.control_container {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      flex-grow: 1;
+      flex-basis: 0;
     }
 
-      div.control_container {
-        position:relative;
-
-      }
       div.temp_logic {
         display: flex;
-        flex-direction: row;
-        position: absolute;
-        margin-top: -30px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
       }
 
       div.thermo_controls {
@@ -125,12 +183,17 @@ div.body_container {
       }
 
         img.js_buttons {
-          width:5%;
-          padding: 10px;
+          width:7%;
+          padding: 7px;
+        }
+        img.js_buttons:hover {
+          width:7%;
+          padding: 7px;
+          opacity: 0.5;
         }
 
   img.thermostat_icon {
-    width:50%;
+    width:70%;
   }
 
   h1.thermo_js_text {
@@ -141,8 +204,8 @@ div.body_container {
     font-size: 50px;
     padding: 20px;
     margin: 0;
-
   }
+
   h1.thermo_city_text {
     font-family: arial;
     font-weight: bold;

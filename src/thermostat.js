@@ -9,7 +9,6 @@ function Thermostat() {
   Thermostat.prototype.turn_up = function() {
     return this.temp += 1
   };
-
   Thermostat.prototype.turn_up = function() {
     if(this.ps == true && (this.temp + 1 > 25)) {
       throw new Error('PS max temp 25 degrees');
@@ -18,7 +17,9 @@ function Thermostat() {
   }
     this.temp += 1
   };
-
+  Thermostat.prototype.reset = function() {
+    this.temp = 20;
+  }
   Thermostat.prototype.turn_down = function() {
     return this.temp -= 1
   };
@@ -26,18 +27,12 @@ function Thermostat() {
   Thermostat.prototype.ps_switch = function() {
     this.ps = !this.ps;
   };
-
-  Thermostat.prototype.ps_on = function() {
-    this.ps = true;
-  };
-
-  Thermostat.prototype.ps_off = function() {
-    this.ps = false;
-  };
-
-  Thermostat.prototype.reset = function() {
-    this.temp = 20;
-  }
+    Thermostat.prototype.ps_on = function() {
+      this.ps = true;
+    };
+    Thermostat.prototype.ps_off = function() {
+      this.ps = false;
+    };
 
   Thermostat.prototype.check_usage = function() {
     if(this.temp <= 18) {
