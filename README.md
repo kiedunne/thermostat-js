@@ -4,6 +4,7 @@ A simple thermostat app made to practice TDD with Javascript and Jasmine. Curren
 power saver and searchable city temperature. Next steps would include animating the thermostat to make it more interactive,
 and adding new pages using Express.
 
+![Screenshot](thermostat_screen.png)
 
 ### Setup
 
