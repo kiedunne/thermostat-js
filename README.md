@@ -9,7 +9,7 @@ and adding new pages using Express.
 
 ```
 git clone https://github.com/kiedunne/thermostat-js
-cd ThermostatApp
+cd thermostat-js
 ```
 
 ```
